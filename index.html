@@ -26,10 +26,10 @@
 				margin-top: 5px;
 				margin-bottom: 5px;
 			}
-			#alg1output {
+			#alg1_permutations {
 				width: 100%;
 			}
-			#alg2input {
+			#alg2_permutations {
 				width: 100%;
 			}
 		</style>
@@ -42,17 +42,17 @@
 					<div class="col">
 						# of Wheels
 						<br>
-						<input type="text">
+						<input id="num_of_wheels" type="text">
 					</div>
 					<div class="col">
 						Wheel
 						<br>
-						<input type="text">
+						<input id="wheel" type="text">
 					</div>
 					<div class="col">
 						Seconds per Permutation
 						<br>
-						<input type="text">
+						<input id="permutation_frequency" type="text">
 					</div>
 				</div>
 			</div>
@@ -61,82 +61,82 @@
 			<br>
 			<div class="algorithm" id="algorithm1_permutation">
 				<h1>Algorithm 1 / Permutation</h1>
-				<div id="alg1input" class="row">
+				<div id="alg1_time" class="row">
 					<div class="col">
 						Years
 						<br>
-						<input type="text">
+						<input class="years" type="text">
 					</div>
 					<div class="col">
 						Months
 						<br>
-						<input type="text">
+						<input class="months" type="text">
 					</div>
 					<div class="col">
 						Days
 						<br>
-						<input type="text">
+						<input class="days" type="text">
 					</div>
 					<div class="col">
 						Hours
 						<br>
-						<input type="text">
+						<input class="hours" type="text">
 					</div>
 					<div class="col">
 						Minutes
 						<br>
-						<input type="text">
+						<input class="minutes" type="text">
 					</div>
 					<div class="col">
 						Seconds
 						<br>
-						<input type="text">
+						<input class="seconds" type="text">
 					</div>
 				</div>
 				<h3># of Permutations</h3>
-				<textarea id="alg1output" rows="5" cols="10">
+				<textarea id="alg1_permutations" rows="5" cols="10">
 					0 0 0 0 0 0 0 0
 				</textarea>
 				<button id="alg1action" class="btn btn-primary">
-					Calculate
+					Calculate 1
 				</button>
 			</div>
 			<div class="algorithm" id="algorithm2_time">
 				<h1>Algorithm 2 / Time</h1>
 				<h3># of Permutations</h3>
-				<textarea id="alg2input" rows="5" cols="10">
+				<textarea id="alg2_permutations" rows="5" cols="10">
 					0 0 0 0 0 0 0 0
 				</textarea>
-				<div id="alg2output" class="row">
+				<div id="alg2_time" class="row">
 					<div class="col">
 						Years
 						<br>
-						<input type="text">
+						<input class="years" type="text">
 					</div>
 					<div class="col">
 						Months
 						<br>
-						<input type="text">
+						<input class="months" type="text">
 					</div>
 					<div class="col">
 						Days
 						<br>
-						<input type="text">
+						<input class="days" type="text">
 					</div>
 					<div class="col">
 						Hours
 						<br>
-						<input type="text">
+						<input class="hours" type="text">
 					</div>
 					<div class="col">
 						Minutes
 						<br>
-						<input type="text">
+						<input class="minutes" type="text">
 					</div>
 					<div class="col">
 						Seconds
 						<br>
-						<input type="text">
+						<input class="seconds" type="text">
 					</div>
 				</div>
 				<button id="alg2action" class="btn btn-success">
@@ -145,6 +145,88 @@
 			</div>
 		</div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-    </body>
+		<script>
+			init_constants = {
+				num_of_wheels: 8,
+				wheel: 2,
+				permutation_frequency: 0.01
+			};
+			set_constants(init_constants);
+			init_time = {
+				years: 0,
+				months: 0,
+				days: 0,
+				hours: 0,
+				minutes: 0,
+				seconds: 1
+			};
+			set_time(init_time, "#alg1_time");
+			set_time(init_time, "#alg2_time");
+			init_permutations = 1;
+			set_permutations(init_permutations, "#alg1_permutations");
+			set_permutations(init_permutations, "#alg2_permutations");
+			$("#alg1action").click(function () {
+				var constants = get_constants();
+				var time = get_time("#alg1_time");
+				permutations = alg1(constants, time);
+				set_permutations(permutations, "#alg1_permutations")
+			});
+			function alg1(constants, time) {
+				var result = 2;
+				return result;
+			}
+			$("#alg2action").click(function() {
+				var constants = get_constants();
+				var permutations = get_permutations("#alg2_permutations");
+				time = alg2(constants, permutations);
+				set_time(time, "#alg2_time");
+			});
+			function alg2(constants, permutations) {
+				var result = {};
+				result.years = 0;
+				result.months = 0;
+				result.days = 0;
+				result.hours = 0;
+				result.minutes = 0;
+				result.seconds = 1;
+				return result;
+			}
+			function get_constants() {
+				var obj = {};
+				obj.num_of_wheels = Number($("#num_of_wheels"));
+				obj.wheel = Number($("#wheel"));
+				obj.permutation_frequency = Number($("#permutation_frequency"));
+				return obj;
+			}
+			function set_constants(obj) {
+				$("#num_of_wheels").val(String(obj.num_of_wheels));
+				$("#wheel").val(String(obj.wheel));
+				$("#permutation_frequency").val(String(obj.permutation_frequency));
+			}
+			function get_time(container) {
+				var obj = {};
+				obj.years = Number($(container).find(".years").val().trim());
+				obj.months = Number($(container).find(".months").val().trim());
+				obj.days = Number($(container).find(".days").val().trim());
+				obj.hours = Number($(container).find(".hours").val().trim());
+				obj.minutes = Number($(container).find(".minutes").val().trim());
+				obj.seconds = Number($(container).find(".seconds").val().trim());
+				return obj;
+			}
+			function set_time(obj, container) {
+				$(container).find(".years").val(obj.years);
+				$(container).find(".months").val(obj.months);
+				$(container).find(".months").val(obj.days);
+				$(container).find(".days").val(obj.hours);
+				$(container).find(".hours").val(obj.minutes);
+				$(container).find(".seconds").val(obj.seconds);
+			}
+			function get_permutations(id) {
+				return String($(id).val().trim());
+			}
+			function set_permutations(permutations, id) {
+				$(id).val(String(permutations));
+			}
+		</script>
+	</body>
 </html>
