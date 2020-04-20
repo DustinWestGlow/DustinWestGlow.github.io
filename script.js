@@ -26,7 +26,7 @@ $("#alg1action").click(function () {
 function alg1(constants, time) {
 	var time_in_seconds = time.years*360*24*60*60 + time.months*30*24*60*60 + time.days*24*60*60 + time.hours*60*60 + time.minutes*60 + time.seconds;
 	var cycles = Math.floor(time_in_seconds / constants.permutation_frequency);
-	/** CONFUSING ALGORITHM RESULTS IN NUMBER BASES - solved
+	
 	var i = constants.num_of_wheels - 1;
 	var permutations = "";
 	while (i >= 0) {
@@ -39,7 +39,6 @@ function alg1(constants, time) {
 		i --;
 	}
 	return permutations;
-	*/
 }
 $("#alg2action").click(function() {
 	var constants = get_constants();
