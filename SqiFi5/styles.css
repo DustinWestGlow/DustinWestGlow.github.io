@@ -1,0 +1,36 @@
+.section {
+	width: 100%;
+}
+
+#landing {
+	height: 80vh;
+	padding-top: 30vh;
+	background-image: url('./spacebg.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: white;
+}
+
+#shopify {
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+	text-align: center;
+}
+#shopify-link {
+	display: block;
+	font-size: 2.0em;
+	text-decoration: underline;
+}
+
+#projects {
+	padding-top: 10vh;
+	padding-bottom: 10vh;
+	padding-left: 5vw;
+	padding-right: 5vw;
+	background-color: #333;
+	color: white;
+}
+#projects-link {
+	text-decoration: underline;
+}
